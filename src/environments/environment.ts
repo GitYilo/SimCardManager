@@ -1,4 +1,4 @@
 export const enviroment={
-    production: false,
-    endpoint:'http://localhost:3001/'
+    production: true,
+    endpoint:'https://gityilo.github.io/SimCardManager/'
 };
