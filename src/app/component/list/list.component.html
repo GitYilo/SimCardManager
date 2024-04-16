@@ -1,0 +1,47 @@
+
+<app-progress-bar></app-progress-bar>
+
+<div class="container">
+  <div class="title">
+    <h4>Listado de SimCards</h4>
+    <button type="button" class="btn btn-primary" routerLink="/add">Agregar SimCard</button>
+  </div>
+
+  <table class="table table-hover">
+    @if (listProductos.length>0) {
+    <thead>
+      <tr>
+        <th scope="col">Imei</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Habilitado</th>
+        <th scope="col">Propietario</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+  }@else {
+    <h4>No existen SimCards que mostrar</h4>
+  }
+    <tbody>
+
+      @for (product of listProductos; track product.imei) {
+      <tr class="table-active">
+        <th scope="row">{{product.imei}}</th>
+        <td>{{product.name}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.enabled}}</td>
+        <td>{{product.ownerfullname}}</td>
+        <td>
+          <button [routerLink]="['/edit',product.id]" type="button" class="btn btn-outline-info">Edit</button>
+          <!--<button routerLink="/edit/{{product.id}}" type="button" class="btn btn-outline-info" >Edit</button>-->
+          <button (click)="deleteProduct(product.id!)" type="button" class="btn btn-outline-info ms-2">Elim</button>
+        </td>
+
+      </tr>
+      }
+
+
+
+    </tbody>
+  </table>
+</div>

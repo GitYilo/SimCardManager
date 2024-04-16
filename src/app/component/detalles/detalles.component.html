@@ -1,0 +1,59 @@
+<div class="row mt-1">
+    <div class="col-lg-4 offset-lg-4">
+        <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+            @if (id==0) {
+            <div class="card-header text-center">Agregar SimCard</div>
+        }@else {
+            <div class="card-header text-center">Editar SimCard</div>
+        }
+            <div class="card-body">
+                <form [formGroup]="detallesForm" (ngSubmit)="AddSimCard()">
+                    <input formControlName="imei" type="number" class="form-control" placeholder="Ingrese imei">
+                    @if (detallesForm.get("imei")?.hasError('required') && detallesForm.get("imei")?.touched) {
+                        <span>
+                            Este campo es <strong>requerido</strong>
+                        </span>
+                    }
+                    <input formControlName="name" type="text" class="form-control mt-2" placeholder="Ingrese nombre">
+                    @if (detallesForm.get("name")?.hasError('required') && detallesForm.get("name")?.touched) {
+                        <span>
+                            Este campo es <strong>requerido</strong>
+                        </span>
+                    }
+                    <input formControlName="description" type="text" class="form-control mt-2" placeholder="Ingrese descripción">
+                    @if (detallesForm.get("description")?.hasError('required') && detallesForm.get("description")?.touched) {
+                        <span>
+                            Este campo es <strong>requerido</strong>
+                        </span>
+                    }
+                    <input formControlName="enabled" type="text" class="form-control mt-2" placeholder="Ingrese estado">
+                    @if (detallesForm.get("enabled")?.hasError('required') && detallesForm.get("enabled")?.touched) {
+                        <span>
+                            Este campo es <strong>requerido</strong>
+                        </span>
+                    }
+                    <input formControlName="ownerfullname" type="text" class="form-control mt-2" placeholder="Ingrese propietario">
+                    @if (detallesForm.get("ownerfullname")?.hasError('required') && detallesForm.get("ownerfullname")?.touched) {
+                        <span>
+                            Este campo es <strong>requerido</strong>
+                        </span>
+                    }
+                    <div class="row mt-2 text-center">
+                        @if (id==0) {
+                        <div class="col-lg-6">
+                            <button [disabled]="detallesForm.invalid" type="submit" class="btn btn-secondary mt-2">Agregar</button>
+                        </div>}
+                        @else {
+                            <div class="col-lg-6">
+                                <button [disabled]="detallesForm.invalid" type="submit" class="btn btn-secondary mt-2">Editar</button>
+                            </div>
+                        }
+                        <div class="col-lg-6">
+                            <button routerLink="/crud" type="button" class="btn btn-secondary mt-2 mr-2">Cancelar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
